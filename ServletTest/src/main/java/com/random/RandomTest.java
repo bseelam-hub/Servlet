@@ -1,0 +1,44 @@
+package main.java.com.random;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/RandomTest")
+public class RandomTest extends HttpServlet {
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7975080741211257461L;
+	protected void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+		String randomNumber =getRandom();
+		
+        request.setAttribute("randomNumber", randomNumber);
+        RequestDispatcher rd=request.getRequestDispatcher("/Random.jsp");  
+        rd.forward(request, response);  
+ 
+    }
+	public String getRandom ()
+	{
+		String token = null;
+		Random randomGenerator = new Random();
+	    for (int idx = 1; idx <= 10; ++idx){
+	      int randomInt = randomGenerator.nextInt(100);
+	      token=String.valueOf(randomInt);
+	    }
+		
+		return token;
+
+	}
+
+}
