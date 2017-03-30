@@ -33,7 +33,7 @@ public class RandomTest extends HttpServlet {
 		String token = null;
 		Random randomGenerator = new Random();
 	    for (int idx = 1; idx <= 10; ++idx){
-	      int randomInt = randomGenerator.nextInt(300300300300300300300300300300);
+	      int randomInt = randomGenerator.nextInt(300);
 	      token=String.valueOf(randomInt);
 	    }
 		
